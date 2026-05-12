@@ -1,7 +1,7 @@
-ls
+
 #_______________________________________________________troubleshooting Tools_______________________________________________________
 ts = 0 #troubelshooting, 1 is true 0 is false
-pv = 0 #print values, 1 makes it print the x and y values to the terminal
+pv = 1 #print values, 1 makes it print the x and y values to the terminal
 
 #_______________________________________________________Import Tools_______________________________________________________
 import math
@@ -22,12 +22,10 @@ xmax = input("What is the maximum x value to calculate? Hit enter to use the def
 if xmax == "":
     xmax = 10
 
-xsteps = input("What x increment to use for the calculations? Hit enter to use the default of .1.   ")
-print(xsteps)
-if xsteps == "":
-    xsteps = ".1"
-elif xsteps == "pi":
-    xsteps = math.pi
+xcount = input("How many values of x should be calculated? hit enter for the default of 1000.   ")
+print(xcount)
+if xcount == "":
+    xcount = "1000"
 
 ymin = input("What is the minimum y value to show on the graph? Hit enter to use the default of -10.   ")
 if ymin == "":
@@ -42,11 +40,11 @@ if ts == 1:
     print("before float convert.")
     print(xmin)
     print(xmax)
-    print(xsteps)
+    print(xcount)
 
 xmin = float(xmin)
 xmax = float(xmax)
-xsteps= float(xsteps)
+xcount= float(xcount)
 ymin = float(ymin)
 ymax = float(ymax)
 
@@ -97,10 +95,12 @@ if ts == 1:
     print("before while loop.")
     print(xmin)
     print(xmax)
-    print(xsteps)
+    print(xcount)
 
 #set up the loop to calculate the y values for our x values
-while x <= xmax: #as long as our current x value is less than or equal to xmax, keep calculating
+x_values = np.linspace(xmin, xmax, int(xcount))
+
+for x in x_values:
     constants["x"] = x    #since I am telling eval to look at the constants dictionary I need to add x to the constants dictionary
 
     try: #the try and except is to allow it to continue if we get a /0 error like in 1/x or the inverse trig functions
@@ -117,16 +117,15 @@ while x <= xmax: #as long as our current x value is less than or equal to xmax, 
         allcoords[f"coords{linecounter}"] = [] #this creates a new array for our next lines coords with the new linecounter number
 
     if pv == 1:
-        print(f"{x}, {y}")
-        print (linecounter)
-    x = x + xsteps #this goes up through x values so that we calculate all points from xmin to xmax based on our xstep value
+        print(f"{x}, " f{y})
+        print (f"{linecounter}")
 
 #printing for troubleshooting
 if ts == 1:
     print("after while loop.")
     print(xmin)
     print(xmax)
-    print(xsteps)
+    print(xcount)
     print(linecounter)
 
 #Print the coordinate pairs, print(coords) just prints them on one line, so to get a nice pair I can use a for loop and define the tuples
@@ -162,7 +161,7 @@ for n in range(linecounter + 1): #this creates a new line for every set of x and
 
 print("F(x)=",functofx) #print the function to be verrified
 
-mplot.ylim(ymin, ymax) # Forces the y-axis to stay between -10 and 10
+mplot.ylim(ymin, ymax) #forces the y-axis to stay between -10 and 10
 mplot.xlim(xmin, xmax) #forces the x axis to show our range of x
 mplot.grid(True)
 mplot.xlabel("x")
