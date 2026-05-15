@@ -54,17 +54,29 @@ python calculator.py
 
 
 Known Issues:
+
 Graphing Function doesn't catch every discontinuity. See 1/x for example of it working and cot(x) for example of it missing discontinuities.
+
 Calculus, CAS, and Physical Motion Not Implimented.
 
 Immediate Goals:
+
 Refine Simplifier: Add rules for multiplication by zero and power identities
+
 Impliment Integration
+
+add (e)ulers number to differentiation engine
+
 Symbolic Asymptote Detection. 
-    Utilize the AST engine to identify denominators and undefined trig arguments to solve for undifined areas to map denominators accurately 
+
+Utilize the AST engine to identify denominators and undefined trig arguments to solve for undifined areas to map denominators accurately 
+
 Fix known bugs
+
 Impliment fully vectorized math for faster graphing.
+
 impliment CAS, and Physical Motion Calculators
 
 Long Term Goals:
+
 Build my own evaluator, AST, ect ect... and stop relying on numpy and math modules.
