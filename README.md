@@ -34,7 +34,7 @@ derivatives.py: The logic trees for symbolic differentiation.
 
 parser.py: AST-based symbolic parsing.
 
-evaluator.py: The core "safe-eval" engine.
+evaluator.py: The core engine.
 
 syntaxcleaner.py: Standardizes user input and hosts the AST simplifier.
 
