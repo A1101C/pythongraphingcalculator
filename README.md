@@ -1,6 +1,6 @@
 # pythongraphingcalculator
 
-A modular Python based calculator capable of handling scientific expressions and generating graphs with support for discontinuities and complex numbers.
+A modular, symbolic graphing calculator built in Python
 
 Features
 
@@ -14,25 +14,33 @@ Asymptote Handling: Detects ZeroDivisionError and ValueError to split plots at d
 
 Complex Number Support: Detects and flags imaginary results.
 
+Full support for single variable symbolic differentiation with a symbolic parser module and custom AST trees in derivitaves.py
+    Working with all trig and inverse trig functions as tested
+    working with LN and LOG
+    
+Introduced an AST-based cleaner that simplifies resulting expressions by applying algebraic identities
+
 
 
 Project Structure
 
-calculator.py: The main entry point and user menu.
+calculator.py: Main entry point and CLI menu.
 
-graphing.py: Logic for coordinate generation and plotting.
- 
-scientific.py: Logic for standard expression evaluation. 
+graphing.py: Coordinate generation and plotting logic.
 
-evaluator.py: The core engine that safely evaluates mathematical strings.
+scientific.py: Standard expression evaluation.
 
-constants.py: A dictionary mapping mathematical strings (like sin, pi, ln) to math module functions.
+derivatives.py: The logic trees for symbolic differentiation.
 
-syntaxcleaner.py: Standardizes user input for the evaluator.
+parser.py: AST-based symbolic parsing.
 
-config.py: Global toggles for troubleshooting (ts) and value printing (pv).
+evaluator.py: The core "safe-eval" engine.
 
+syntaxcleaner.py: Standardizes user input and hosts the AST simplifier.
 
+testing.py: A stress-test script that hammers the engine with randomized functions.
+
+constants.py & config.py: Global mappings and troubleshooting toggles.
 
 Installation
 
@@ -50,9 +58,13 @@ Graphing Function doesn't catch every discontinuity. See 1/x for example of it w
 Calculus, CAS, and Physical Motion Not Implimented.
 
 Immediate Goals:
-Fix known bugs, detect all discontinuities correctly
-Optimize with vectorized math for graphing
-impliment CAS, Calculus, and Physical Motion Calculators
+Refine Simplifier: Add rules for multiplication by zero and power identities
+Impliment Integration
+Symbolic Asymptote Detection. 
+    Utilize the AST engine to identify denominators and undefined trig arguments to solve for undifined areas to map denominators accurately 
+Fix known bugs
+Impliment fully vectorized math for faster graphing.
+impliment CAS, and Physical Motion Calculators
 
 Long Term Goals:
 Build my own evaluator, AST, ect ect... and stop relying on numpy and math modules.
