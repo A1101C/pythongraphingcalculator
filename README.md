@@ -1,5 +1,11 @@
 # pythongraphingcalculator
 
+I have abandoned this project as I Decided to build my own math engine from scratch in C++. The new project can be found here: https://github.com/A1101C/Arithmos-Machine
+
+
+
+
+
 A modular, symbolic graphing calculator built in Python
 
 Features
